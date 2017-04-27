@@ -65,6 +65,7 @@ function displayMenu() {
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
   console.log('(4) Eat Clyde');
+  console.log('(p) Eat Power-Pellet');
   console.log('(q) Quit');
 
 }
@@ -83,6 +84,11 @@ function displayPrompt() {
 function eatDot() {
   console.log('\nChomp!');
   score += 10;
+}
+
+function eatPowerPellet() {
+  console.log('\nChomp!');
+  powerPellets += 1;
 }
 
 function eatGhost(ghost) {
@@ -116,6 +122,9 @@ function processInput(key) {
       break;
     case '4':
       eatGhost(ghosts[3]);
+      break;
+    case 'p':
+      eatPowerPellet();
       break;
     case 'q':
       process.exit();
