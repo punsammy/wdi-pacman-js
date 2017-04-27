@@ -61,13 +61,17 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
-  if (powerPellets >= 1) {    
-    console.log('(p) Eat Power-Pellet');
+  // console.log('(1) Eat Inky'
+  // console.log('(2) Eat Blinky');
+  // console.log('(3) Eat Pinky');
+  // console.log('(4) Eat Clyde');
+  if (powerPellets >= 1) {
+  console.log('(p) Eat Power-Pellet');
   }
+  console.log('(1) Eat Inky (edible: ' + inky.edible +')');
+  console.log('(2) Eat Blinky (edible: ' + blinky.edible +') ');
+  console.log('(3) Eat Pinky (edible: ' + pinky.edible +')');
+  console.log('(4) Eat Clyde (edible: ' + clyde.edible +')');
   console.log('(q) Quit');
 
 }
@@ -103,6 +107,11 @@ function eatGhost(ghost) {
   if (ghost.edible === false) {
     console.log('\nYou ate ' + ghost.colour + ' ' +  ghost.name +  '! \nDo not eat ghosts!');
     lives -= 1;
+  }
+  else {
+    console.log('\nYou ate ' + ghost.character + '' + ghost.name );
+    score += 200;
+    ghost.edible = false
   }
 }
 
