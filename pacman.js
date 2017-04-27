@@ -65,7 +65,9 @@ function displayMenu() {
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
   console.log('(4) Eat Clyde');
-  console.log('(p) Eat Power-Pellet');
+  if (powerPellets >= 1) {    
+    console.log('(p) Eat Power-Pellet');
+  }
   console.log('(q) Quit');
 
 }
@@ -87,8 +89,14 @@ function eatDot() {
 }
 
 function eatPowerPellet() {
-  console.log('\nChomp!');
-  powerPellets += 1;
+  if (powerPellets <= 0) {
+    console.log('\nNo Power-Pellets!');
+  }
+  else {
+    score += 50;
+    ghostEdible();
+    powerPellets -= 1;
+  }
 }
 
 function eatGhost(ghost) {
