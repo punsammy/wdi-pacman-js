@@ -72,7 +72,7 @@ function displayMenu() {
 function displayPrompt() {
   // process.stdout.write is similar to console.log except it doesn't add a new line after the text
   if (lives <= 0) {
-    console.log('\nYou are out of lives!');
+    console.log('\nGame Over!');
     process.exit();
   }
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
