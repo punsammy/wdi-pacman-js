@@ -61,11 +61,20 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(1) Eat Inky');
+  console.log('(2) Eat Blinky');
+  console.log('(3) Eat Pinky');
+  console.log('(4) Eat Clyde');
   console.log('(q) Quit');
+
 }
 
 function displayPrompt() {
   // process.stdout.write is similar to console.log except it doesn't add a new line after the text
+  if (lives <= 0) {
+    console.log('\nYou are out of lives!');
+    process.exit();
+  }
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
 }
 
@@ -76,16 +85,40 @@ function eatDot() {
   score += 10;
 }
 
+function eatGhost(ghost) {
+  if (ghost.edible === false) {
+    console.log('\nYou ate ' + ghost.colour + ' ' +  ghost.name +  '! \nDo not eat ghosts!');
+    lives -= 1;
+  }
+}
+
+function ghostEdible() {
+  for (var i = 0; i < 4; i ++) {
+    ghosts[i].edible = true;
+  }
+}
 
 // Process Player's Input
 function processInput(key) {
   switch(key) {
     case '\u0003': // This makes it so CTRL-C will quit the program
-    case 'q':
-      process.exit();
-      break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhost(ghosts[0]);
+      break;
+    case '2':
+      eatGhost(ghosts[1]);
+      break;
+    case '3':
+      eatGhost(ghosts[2]);
+      break;
+    case '4':
+      eatGhost(ghosts[3]);
+      break;
+    case 'q':
+      process.exit();
       break;
     default:
       console.log('\nInvalid Command!');
